@@ -4,28 +4,37 @@ class Keyboard {
     this.parent = parent;
   }
 
-  render() {
-    for (let i = 0; i < en.length; i += 1) {
+  appear(event) {
+    if (event.target.classList.contains('keyboard__btn_symbol') || event.target.classList.contains('keyboard__btn_space')) {
+      document.querySelector('textarea').value += event.target.textContent;
+    }
+  }
+
+  render(lang) {
+    for (let i = 0; i < lang.length; i += 1) {
       const row = document.createElement('div');
       row.className = 'keyboard__row';
       this.parent.appendChild(row);
 
-      const rowLength = en[i].length;
+      const rowLength = lang[i].length;
       for (let j = 0; j < rowLength; j += 1) {
         const key = document.createElement('div');
-        key.className = en[i][j].class;
-        key.innerText = en[i][j].value;
+        key.className = lang[i][j].class;
+        key.innerText = lang[i][j].value;
+        key.dataset.value = lang[i][j].value;
+        key.dataset.shiftValue = lang[i][j].shiftValue;
+        key.addEventListener('click', this.appear);
         row.appendChild(key);
       }
     }
-    // const
   }
+
+
 }
 
 
 
 
-// document.onload = () => {
 
 function makeLayout() {
   const body = document.querySelector('body');
@@ -50,7 +59,7 @@ function makeLayout() {
   body.appendChild(keyboardContainer);
 
   const keyboard = new Keyboard(en, keyboardContainer);
-  keyboard.render();
+  keyboard.render(en);
 }
 
 document.addEventListener('DOMContentLoaded', makeLayout);
