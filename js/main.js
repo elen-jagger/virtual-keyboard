@@ -4,10 +4,18 @@ class Keyboard {
     this.parent = parent;
   }
 
-  appear(event) {
+  input(event) {
     if (event.target.classList.contains('keyboard__btn_symbol') || event.target.classList.contains('keyboard__btn_space')) {
       document.querySelector('textarea').value += event.target.textContent;
     }
+  }
+
+  keyDown(event) {
+    event.target.classList.add('keyboard__btn_pressed');
+  }
+
+  keyUp(event) {
+    event.target.classList.remove('keyboard__btn_pressed');
   }
 
   render(lang) {
@@ -23,7 +31,11 @@ class Keyboard {
         key.innerText = lang[i][j].value;
         key.dataset.value = lang[i][j].value;
         key.dataset.shiftValue = lang[i][j].shiftValue;
-        key.addEventListener('click', this.appear);
+
+        key.addEventListener('mousedown', this.keyDown);
+        key.addEventListener('mouseup', this.keyUp);
+        key.addEventListener('click', this.input);
+
         row.appendChild(key);
       }
     }
