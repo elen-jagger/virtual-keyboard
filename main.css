@@ -16,6 +16,10 @@
   overflow: auto;
   border: 2px solid #006d77;
   border-radius: 5px;
+  background-color: #f4f9fa;
+  font-family: 'Mulish', sans-serif;
+  font-size: 18px;
+  color: #006d77;
 }
 
 .textarea:focus {
@@ -76,6 +80,10 @@
   font-size: 20px;
   color: #006d77;
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.4);
+}
+
+.keyboard__btn:hover {
+  cursor: pointer;
 }
 
 .keyboard__btn_comand_big {
