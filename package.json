@@ -1,0 +1,16 @@
+{
+  "name": "virtual-keyboard",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint ./js",
+    "lint:fix": "eslint ./js --fix"
+  },
+  "keywords": [],
+  "author": "elen-jagger",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint-config-airbnb-base": "^15.0.0"
+  }
+}
