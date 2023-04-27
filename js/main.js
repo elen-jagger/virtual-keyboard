@@ -1,12 +1,18 @@
 /* eslint-disable max-classes-per-file */
 class KeyButton {
-  constructor(options) {
+  constructor(options, keyboard) {
     this.options = options;
+    this.keyboard = keyboard;
   }
 //
   onClick = () => {
-    if (this.html.classList.contains('keyboard__btn_symbol') || this.html.classList.contains('keyboard__btn_space')) {
+    if (this.html.textContent === 'Shift') {
+      this.keyboard.toggleShift(true);
+    } else if (this.html.classList.contains('keyboard__btn_symbol') || this.html.classList.contains('keyboard__btn_space')) {
+      // todo use textarea
       document.querySelector('textarea').value += this.html.textContent;
+
+      this.keyboard.toggleShift(false);
     }
   }
 
@@ -32,6 +38,14 @@ class KeyButton {
     this.html = key;
     return key;
   }
+
+  shift() {
+    this.html.textContent = this.options.shiftValue;
+  }
+
+  unshift() {
+    this.html.textContent = this.options.value;
+  }
 }
 
 class Keyboard {
@@ -39,6 +53,7 @@ class Keyboard {
     this.lang = lang;
     this.parent = parent;
     this.keys = new Map();
+    this.isShift = false;
 
     document.addEventListener('keydown', this.onKeydown);
     document.addEventListener('keyup', this.onKeyup);
@@ -52,7 +67,7 @@ class Keyboard {
 
       const rowLength = this.lang[i].length;
       for (let j = 0; j < rowLength; j += 1) {
-        const key = new KeyButton(this.lang[i][j]);
+        const key = new KeyButton(this.lang[i][j], this);
 
         this.keys.set(en[i][j].keycode, key);
         row.appendChild(key.render());
@@ -63,20 +78,49 @@ class Keyboard {
   onKeydown = (event) => {
     console.log('event.key', event.key);
     console.log('event.code', event.code);
-    //console.log('this.html.classList', this.html.classList);
-    if ( event.code === 'Tab') {
-      console.log('tab up');
+    if (event.code === 'Tab') {
       this.keys.get(event.code.toLowerCase()).html.classList.add('keyboard__btn_pressed');
       setTimeout(() => this.keys.get(event.code.toLowerCase()).html.classList.remove('keyboard__btn_pressed'), 200);
+    } else if (event.code === 'ShiftLeft' || event.code === 'ShiftRight') {
+      console.log('onKeydown Shift');
+      this.keys.get(event.code.toLowerCase()).html.classList.add('keyboard__btn_pressed');
+      this.shift();
     } else {
       this.keys.get(event.code.toLowerCase()).html.classList.add('keyboard__btn_pressed');
     }
   }
 
   onKeyup = (event) => {
-    console.log('event.key', event.key);
-    console.log('event.code', event.code);
-    this.keys.get(event.code.toLowerCase()).html.classList.remove('keyboard__btn_pressed');
+    if (event.code === 'ShiftLeft' || event.code === 'ShiftRight') {
+      this.keys.get(event.code.toLowerCase()).html.classList.remove('keyboard__btn_pressed');
+      this.unshift();
+    } else {
+      this.keys.get(event.code.toLowerCase()).html.classList.remove('keyboard__btn_pressed');
+    }
+  }
+
+  toggleShift(flag) {
+    if (flag !== this.isShift) {
+      this.isShift = flag;
+
+      if (this.isShift) {
+        this.shift();
+      } else {
+        this.unshift();
+      }
+    }
+  }
+
+  shift() {
+    for(const [name, key] of this.keys) {
+      key.shift();
+    }
+  }
+
+  unshift() {
+    for(const [name, key] of this.keys) {
+      key.unshift();
+    }
   }
 }
 
