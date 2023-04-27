@@ -1,50 +1,59 @@
+/* eslint-disable max-classes-per-file */
+class KeyButton {
+  constructor(options) {
+    this.options = options;
+  }
+
+  onClick = () => {
+    if (this.key.classList.contains('keyboard__btn_symbol') || this.key.classList.contains('keyboard__btn_space')) {
+      document.querySelector('textarea').value += this.key.textContent;
+    }
+  }
+
+  onKeyDown = () => {
+    this.key.classList.add('keyboard__btn_pressed');
+  }
+
+  onKeyUp = () => {
+    this.key.classList.remove('keyboard__btn_pressed');
+  }
+
+  render() {
+    const key = document.createElement('div');
+    key.className = this.options.class;
+    key.innerText = this.options.value;
+    key.dataset.value = this.options.value;
+    key.dataset.shiftValue = this.options.shiftValue;
+
+    key.addEventListener('mousedown', this.onKeyDown);
+    key.addEventListener('mouseup', this.onKeyUp);
+    key.addEventListener('click', this.onClick);
+
+    this.key = key;
+    return key;
+  }
+}
+
 class Keyboard {
   constructor(lang, parent) {
     this.lang = lang;
     this.parent = parent;
   }
 
-  input(event) {
-    if (event.target.classList.contains('keyboard__btn_symbol') || event.target.classList.contains('keyboard__btn_space')) {
-      document.querySelector('textarea').value += event.target.textContent;
-    }
-  }
-
-  keyDown(event) {
-    event.target.classList.add('keyboard__btn_pressed');
-  }
-
-  keyUp(event) {
-    event.target.classList.remove('keyboard__btn_pressed');
-  }
-
-  render(lang) {
-    for (let i = 0; i < lang.length; i += 1) {
+  render() {
+    for (let i = 0; i < this.lang.length; i += 1) {
       const row = document.createElement('div');
       row.className = 'keyboard__row';
       this.parent.appendChild(row);
 
-      const rowLength = lang[i].length;
+      const rowLength = this.lang[i].length;
       for (let j = 0; j < rowLength; j += 1) {
-        const key = document.createElement('div');
-        key.className = lang[i][j].class;
-        key.innerText = lang[i][j].value;
-        key.dataset.value = lang[i][j].value;
-        key.dataset.shiftValue = lang[i][j].shiftValue;
-
-        key.addEventListener('mousedown', this.keyDown);
-        key.addEventListener('mouseup', this.keyUp);
-        key.addEventListener('click', this.input);
-
-        row.appendChild(key);
+        const key = new KeyButton(this.lang[i][j]);
+        row.appendChild(key.render());
       }
     }
   }
-
-
 }
-
-
 
 
 
@@ -71,7 +80,7 @@ function makeLayout() {
   body.appendChild(keyboardContainer);
 
   const keyboard = new Keyboard(en, keyboardContainer);
-  keyboard.render(en);
+  keyboard.render();
 }
 
 document.addEventListener('DOMContentLoaded', makeLayout);
