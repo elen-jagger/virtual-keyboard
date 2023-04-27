@@ -3,19 +3,19 @@ class KeyButton {
   constructor(options) {
     this.options = options;
   }
-
+//
   onClick = () => {
-    if (this.key.classList.contains('keyboard__btn_symbol') || this.key.classList.contains('keyboard__btn_space')) {
-      document.querySelector('textarea').value += this.key.textContent;
+    if (this.html.classList.contains('keyboard__btn_symbol') || this.html.classList.contains('keyboard__btn_space')) {
+      document.querySelector('textarea').value += this.html.textContent;
     }
   }
 
   onKeyDown = () => {
-    this.key.classList.add('keyboard__btn_pressed');
+    this.html.classList.add('keyboard__btn_pressed');
   }
 
   onKeyUp = () => {
-    this.key.classList.remove('keyboard__btn_pressed');
+    this.html.classList.remove('keyboard__btn_pressed');
   }
 
   render() {
@@ -29,7 +29,7 @@ class KeyButton {
     key.addEventListener('mouseup', this.onKeyUp);
     key.addEventListener('click', this.onClick);
 
-    this.key = key;
+    this.html = key;
     return key;
   }
 }
@@ -38,6 +38,10 @@ class Keyboard {
   constructor(lang, parent) {
     this.lang = lang;
     this.parent = parent;
+    this.keys = new Map();
+
+    document.addEventListener('keydown', this.onKeydown);
+    document.addEventListener('keyup', this.onKeyup);
   }
 
   render() {
@@ -49,13 +53,32 @@ class Keyboard {
       const rowLength = this.lang[i].length;
       for (let j = 0; j < rowLength; j += 1) {
         const key = new KeyButton(this.lang[i][j]);
+
+        this.keys.set(en[i][j].keycode, key);
         row.appendChild(key.render());
       }
     }
   }
+
+  onKeydown = (event) => {
+    console.log('event.key', event.key);
+    console.log('event.code', event.code);
+    //console.log('this.html.classList', this.html.classList);
+    if ( event.code === 'Tab') {
+      console.log('tab up');
+      this.keys.get(event.code.toLowerCase()).html.classList.add('keyboard__btn_pressed');
+      setTimeout(() => this.keys.get(event.code.toLowerCase()).html.classList.remove('keyboard__btn_pressed'), 200);
+    } else {
+      this.keys.get(event.code.toLowerCase()).html.classList.add('keyboard__btn_pressed');
+    }
+  }
+
+  onKeyup = (event) => {
+    console.log('event.key', event.key);
+    console.log('event.code', event.code);
+    this.keys.get(event.code.toLowerCase()).html.classList.remove('keyboard__btn_pressed');
+  }
 }
-
-
 
 function makeLayout() {
   const body = document.querySelector('body');
@@ -79,8 +102,22 @@ function makeLayout() {
   keyboardContainer.className = 'keyboard-container';
   body.appendChild(keyboardContainer);
 
+  const field = new Textarea();
+
   const keyboard = new Keyboard(en, keyboardContainer);
   keyboard.render();
 }
+
+class Textarea {
+  constructor() {
+    this.textarea = document.querySelector('.textarea');
+    document.addEventListener('keydown', this.onKeydown);
+  }
+
+  onKeydown = () => {
+    this.textarea.focus();
+  }
+}
+
 
 document.addEventListener('DOMContentLoaded', makeLayout);
