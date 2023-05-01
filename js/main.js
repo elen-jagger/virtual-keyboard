@@ -34,6 +34,8 @@ class KeyButton {
       }
     } else if (this.html.textContent === 'Enter') {
       document.querySelector('textarea').value += '\n';
+    } else if (this.html.textContent === 'Tab') {
+      document.querySelector('textarea').value += '    ';
     }
     document.querySelector('textarea').focus();
   }
@@ -201,6 +203,8 @@ function makeLayout() {
 
   const keyboard = new Keyboard(en, keyboardContainer);
   keyboard.render();
+
+  document.querySelector('textarea').focus();
 }
 
 class Textarea {
