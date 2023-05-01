@@ -7,9 +7,6 @@ class KeyButton {
 //
   onClick = () => {
     const textField = document.querySelector('textarea');
-    console.log('cursor pos = ', textField.selectionStart);
-      console.log('textField.value', textField.value);
-      console.log('textField.value.length', textField.value.length);
     if (this.html.textContent === 'Shift') {
       this.html.classList.add('keyboard__btn_pressed');
       if (document.querySelector('.keyboard__btn_caps')) {
@@ -20,7 +17,15 @@ class KeyButton {
       }
     } else if (this.html.classList.contains('keyboard__btn_symbol') || this.html.classList.contains('keyboard__btn_space') || this.html.classList.contains('keyboard__btn_letter')) {
       // todo use textarea
-      textField.value += this.html.innerText ? this.html.innerText : this.html.textContent;
+      const cursorPosition = textField.selectionEnd;
+      const inputChar = this.html.innerText ? this.html.innerText : this.html.textContent;
+      if (cursorPosition === textField.value.length) {
+        textField.value += inputChar;
+      } else {
+        const temp = textField.value.slice(0, cursorPosition) + inputChar + textField.value.slice(cursorPosition);
+        textField.value = temp;
+      }
+
       document.querySelectorAll('[data-value="Shift"]').forEach((el) => el.classList.remove('keyboard__btn_pressed'));
       if (document.querySelector('.keyboard__btn_caps')) {
         this.keyboard.toggleShift(false);
@@ -44,13 +49,9 @@ class KeyButton {
       if (cursorPosition === textField.value.length) {
         textField.value = textField.value.slice(0, (cursorPosition - 1));
       } else {
-        console.log('mid');
-        console.log('slice 1 = ', textField.value.slice(0, (cursorPosition - 1)));
-        console.log('slice 2 = ', textField.value.slice((cursorPosition - 1)));
         const temp = textField.value.slice(0, (cursorPosition - 1)) + textField.value.slice(cursorPosition);
         textField.value = temp;
       }
-
     }
 
 
