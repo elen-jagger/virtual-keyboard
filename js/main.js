@@ -6,7 +6,10 @@ class KeyButton {
   }
 //
   onClick = () => {
-    console.log('this.html.textContent = ', this.html.textContent);
+    const textField = document.querySelector('textarea');
+    console.log('cursor pos = ', textField.selectionStart);
+      console.log('textField.value', textField.value);
+      console.log('textField.value.length', textField.value.length);
     if (this.html.textContent === 'Shift') {
       this.html.classList.add('keyboard__btn_pressed');
       if (document.querySelector('.keyboard__btn_caps')) {
@@ -17,7 +20,7 @@ class KeyButton {
       }
     } else if (this.html.classList.contains('keyboard__btn_symbol') || this.html.classList.contains('keyboard__btn_space') || this.html.classList.contains('keyboard__btn_letter')) {
       // todo use textarea
-      document.querySelector('textarea').value += this.html.innerText ? this.html.innerText : this.html.textContent;
+      textField.value += this.html.innerText ? this.html.innerText : this.html.textContent;
       document.querySelectorAll('[data-value="Shift"]').forEach((el) => el.classList.remove('keyboard__btn_pressed'));
       if (document.querySelector('.keyboard__btn_caps')) {
         this.keyboard.toggleShift(false);
@@ -33,11 +36,25 @@ class KeyButton {
         this.keyboard.toggleCaps(false);
       }
     } else if (this.html.textContent === 'Enter') {
-      document.querySelector('textarea').value += '\n';
+      textField.value += '\n';
     } else if (this.html.textContent === 'Tab') {
-      document.querySelector('textarea').value += '    ';
+      textField.value += '    ';
+    } else if (this.html.textContent === 'Backspace') {
+      const cursorPosition = textField.selectionEnd;
+      if (cursorPosition === textField.value.length) {
+        textField.value = textField.value.slice(0, (cursorPosition - 1));
+      } else {
+        console.log('mid');
+        console.log('slice 1 = ', textField.value.slice(0, (cursorPosition - 1)));
+        console.log('slice 2 = ', textField.value.slice((cursorPosition - 1)));
+        const temp = textField.value.slice(0, (cursorPosition - 1)) + textField.value.slice(cursorPosition);
+        textField.value = temp;
+      }
+
     }
-    document.querySelector('textarea').focus();
+
+
+    textField.focus();
   }
 
   onKeyDown = () => {
@@ -45,8 +62,9 @@ class KeyButton {
   }
 
   onKeyUp = () => {
-    this.html.classList.remove('keyboard__btn_pressed');
-
+    if (document.querySelector('.keyboard__btn_pressed')) {
+      this.html.classList.remove('keyboard__btn_pressed');
+    }
   }
 
   render() {
@@ -138,7 +156,9 @@ class Keyboard {
         this.unshift();
       }
     } else {
-      this.keys.get(event.code.toLowerCase()).html.classList.remove('keyboard__btn_pressed');
+      if (document.querySelector('.keyboard__btn_pressed')) {
+        this.keys.get(event.code.toLowerCase()).html.classList.remove('keyboard__btn_pressed');
+      }
     }
   }
 
