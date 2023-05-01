@@ -266,7 +266,7 @@ const en = [[{
   value: '↑',
   shiftValue: '↑',
   keycode: 'arrowup',
-  class: 'keyboard__btn keyboard__btn_comand_small',
+  class: 'keyboard__btn keyboard__btn_comand_small keyboard__btn_comand_arrow',
 }, {
   value: 'Shift',
   shiftValue: 'Shift',
@@ -301,17 +301,17 @@ const en = [[{
   value: '←',
   shiftValue: '←',
   keycode: 'arrowleft',
-  class: 'keyboard__btn keyboard__btn_comand_small',
+  class: 'keyboard__btn keyboard__btn_comand_small keyboard__btn_comand_arrow',
 }, {
   value: '↓',
   shiftValue: '↓',
   keycode: 'arrowdown',
-  class: 'keyboard__btn keyboard__btn_comand_small',
+  class: 'keyboard__btn keyboard__btn_comand_small keyboard__btn_comand_arrow',
 }, {
   value: '→',
   shiftValue: '→',
   keycode: 'arrowright',
-  class: 'keyboard__btn keyboard__btn_comand_small',
+  class: 'keyboard__btn keyboard__btn_comand_small keyboard__btn_comand_arrow',
 }, {
   value: 'Ctrl',
   shiftValue: 'Ctrl',
@@ -534,7 +534,7 @@ const ru = [[{
 }, {
   value: '↑',
   shiftValue: '↑',
-  class: 'keyboard__btn keyboard__btn_comand_small',
+  class: 'keyboard__btn keyboard__btn_comand_small keyboard__btn_comand_arrow',
 }, {
   value: 'Shift',
   shiftValue: 'Shift',
@@ -562,15 +562,15 @@ const ru = [[{
 }, {
   value: '←',
   shiftValue: '←',
-  class: 'keyboard__btn keyboard__btn_comand_small',
+  class: 'keyboard__btn keyboard__btn_comand_small keyboard__btn_comand_arrow',
 }, {
   value: '↓',
   shiftValue: '↓',
-  class: 'keyboard__btn keyboard__btn_comand_small',
+  class: 'keyboard__btn keyboard__btn_comand_small keyboard__btn_comand_arrow',
 }, {
   value: '→',
   shiftValue: '→',
-  class: 'keyboard__btn keyboard__btn_comand_small',
+  class: 'keyboard__btn keyboard__btn_comand_small keyboard__btn_comand_arrow',
 }, {
   value: 'Ctrl',
   shiftValue: 'Ctrl',

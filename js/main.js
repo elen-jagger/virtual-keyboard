@@ -16,9 +16,8 @@ class KeyButton {
       } else {
         this.keyboard.toggleShift(true);
       }
-    } else if (this.html.classList.contains('keyboard__btn_symbol') || this.html.classList.contains('keyboard__btn_space') || this.html.classList.contains('keyboard__btn_letter')) {
+    } else if (this.html.classList.contains('keyboard__btn_symbol') || this.html.classList.contains('keyboard__btn_space') || this.html.classList.contains('keyboard__btn_letter') || this.html.classList.contains('keyboard__btn_comand_arrow')) {
       // todo use textarea
-      //const cursorPosition = textField.selectionEnd;
       const inputChar = this.html.innerText ? this.html.innerText : this.html.textContent;
       if (cursorPosition === textField.value.length) {
         textField.value += inputChar;
