@@ -7,6 +7,7 @@ class KeyButton {
 //
   onClick = () => {
     const textField = document.querySelector('textarea');
+    const cursorPosition = textField.selectionEnd;
     if (this.html.textContent === 'Shift') {
       this.html.classList.add('keyboard__btn_pressed');
       if (document.querySelector('.keyboard__btn_caps')) {
@@ -17,7 +18,7 @@ class KeyButton {
       }
     } else if (this.html.classList.contains('keyboard__btn_symbol') || this.html.classList.contains('keyboard__btn_space') || this.html.classList.contains('keyboard__btn_letter')) {
       // todo use textarea
-      const cursorPosition = textField.selectionEnd;
+      //const cursorPosition = textField.selectionEnd;
       const inputChar = this.html.innerText ? this.html.innerText : this.html.textContent;
       if (cursorPosition === textField.value.length) {
         textField.value += inputChar;
@@ -41,9 +42,19 @@ class KeyButton {
         this.keyboard.toggleCaps(false);
       }
     } else if (this.html.textContent === 'Enter') {
-      textField.value += '\n';
+      if (cursorPosition === textField.value.length) {
+        textField.value += '\n';
+      } else {
+        const temp = textField.value.slice(0, cursorPosition) + '\n' + textField.value.slice(cursorPosition);
+        textField.value = temp;
+      }
     } else if (this.html.textContent === 'Tab') {
-      textField.value += '    ';
+      if (cursorPosition === textField.value.length) {
+        textField.value += '    ';
+      } else {
+        const temp = textField.value.slice(0, cursorPosition) + '    ' + textField.value.slice(cursorPosition);
+        textField.value = temp;
+      }
     } else if (this.html.textContent === 'Backspace') {
       const cursorPosition = textField.selectionEnd;
       if (cursorPosition === textField.value.length) {
@@ -127,8 +138,20 @@ class Keyboard {
     console.log('event.key', event.key);
     console.log('event.code', event.code);
     if (event.code === 'Tab') {
+      event.preventDefault();
       this.keys.get(event.code.toLowerCase()).html.classList.add('keyboard__btn_pressed');
-      setTimeout(() => this.keys.get(event.code.toLowerCase()).html.classList.remove('keyboard__btn_pressed'), 200);
+      setTimeout(() => {
+        const textField = document.querySelector('textarea');
+        const cursorPosition = textField.selectionEnd;
+        if (cursorPosition === textField.value.length) {
+          textField.value += '    ';
+        } else {
+          const temp = textField.value.slice(0, cursorPosition) + '    ' + textField.value.slice(cursorPosition);
+          textField.value = temp;
+        }
+        this.keys.get(event.code.toLowerCase()).html.classList.remove('keyboard__btn_pressed');
+        document.querySelector('textarea').focus();
+      } , 200);
     } else if (event.code === 'ShiftLeft' || event.code === 'ShiftRight') {
         this.keys.get(event.code.toLowerCase()).html.classList.add('keyboard__btn_pressed');
         if (document.querySelector('.keyboard__btn_caps')) {
