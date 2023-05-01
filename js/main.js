@@ -52,6 +52,10 @@ class KeyButton {
         const temp = textField.value.slice(0, (cursorPosition - 1)) + textField.value.slice(cursorPosition);
         textField.value = temp;
       }
+    } else if (this.html.textContent === 'Del') {
+      const cursorPosition = textField.selectionEnd;
+      const temp = textField.value.slice(0, cursorPosition) + textField.value.slice((cursorPosition + 1));
+      textField.value = temp;
     }
 
 
