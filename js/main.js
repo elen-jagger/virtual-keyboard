@@ -18,9 +18,7 @@ class KeyButton {
     } else if (this.html.classList.contains('keyboard__btn_symbol') || this.html.classList.contains('keyboard__btn_space') || this.html.classList.contains('keyboard__btn_letter')) {
       // todo use textarea
       document.querySelector('textarea').value += this.html.innerText ? this.html.innerText : this.html.textContent;
-
       document.querySelectorAll('[data-value="Shift"]').forEach((el) => el.classList.remove('keyboard__btn_pressed'));
-
       if (document.querySelector('.keyboard__btn_caps')) {
         this.keyboard.toggleShift(false);
         document.querySelectorAll('.keyboard__btn_letter').forEach((el) => el.textContent = el.textContent.toUpperCase());
@@ -34,7 +32,10 @@ class KeyButton {
       } else {
         this.keyboard.toggleCaps(false);
       }
+    } else if (this.html.textContent === 'Enter') {
+      document.querySelector('textarea').value += '\n';
     }
+    document.querySelector('textarea').focus();
   }
 
   onKeyDown = () => {
@@ -43,6 +44,7 @@ class KeyButton {
 
   onKeyUp = () => {
     this.html.classList.remove('keyboard__btn_pressed');
+
   }
 
   render() {
