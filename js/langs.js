@@ -77,52 +77,52 @@ const en = [[{
   value: 'q',
   shiftValue: 'Q',
   keycode: 'keyq',
-  class: 'keyboard__btn keyboard__btn_symbol',
+  class: 'keyboard__btn keyboard__btn_letter',
 }, {
   value: 'w',
   shiftValue: 'W',
   keycode: 'keyw',
-  class: 'keyboard__btn keyboard__btn_symbol',
+  class: 'keyboard__btn keyboard__btn_letter',
 }, {
   value: 'e',
   shiftValue: 'E',
   keycode: 'keye',
-  class: 'keyboard__btn keyboard__btn_symbol',
+  class: 'keyboard__btn keyboard__btn_letter',
 }, {
   value: 'r',
   shiftValue: 'R',
   keycode: 'keyr',
-  class: 'keyboard__btn keyboard__btn_symbol',
+  class: 'keyboard__btn keyboard__btn_letter',
 }, {
   value: 't',
   shiftValue: 'T',
   keycode: 'keyt',
-  class: 'keyboard__btn keyboard__btn_symbol',
+  class: 'keyboard__btn keyboard__btn_letter',
 }, {
   value: 'y',
   shiftValue: 'Y',
   keycode: 'keyy',
-  class: 'keyboard__btn keyboard__btn_symbol',
+  class: 'keyboard__btn keyboard__btn_letter',
 }, {
   value: 'u',
   shiftValue: 'U',
   keycode: 'keyu',
-  class: 'keyboard__btn keyboard__btn_symbol',
+  class: 'keyboard__btn keyboard__btn_letter',
 }, {
   value: 'i',
   shiftValue: 'I',
   keycode: 'keyi',
-  class: 'keyboard__btn keyboard__btn_symbol',
+  class: 'keyboard__btn keyboard__btn_letter',
 }, {
   value: 'o',
   shiftValue: 'O',
   keycode: 'keyo',
-  class: 'keyboard__btn keyboard__btn_symbol',
+  class: 'keyboard__btn keyboard__btn_letter',
 }, {
   value: 'p',
   shiftValue: 'P',
   keycode: 'keyp',
-  class: 'keyboard__btn keyboard__btn_symbol',
+  class: 'keyboard__btn keyboard__btn_letter',
 }, {
   value: '[',
   shiftValue: '{',
@@ -151,47 +151,47 @@ const en = [[{
   value: 'a',
   shiftValue: 'A',
   keycode: 'keya',
-  class: 'keyboard__btn keyboard__btn_symbol',
+  class: 'keyboard__btn keyboard__btn_letter',
 }, {
   value: 's',
   shiftValue: 'S',
   keycode: 'keys',
-  class: 'keyboard__btn keyboard__btn_symbol',
+  class: 'keyboard__btn keyboard__btn_letter',
 }, {
   value: 'd',
   shiftValue: 'D',
   keycode: 'keyd',
-  class: 'keyboard__btn keyboard__btn_symbol',
+  class: 'keyboard__btn keyboard__btn_letter',
 }, {
   value: 'f',
   shiftValue: 'F',
   keycode: 'keyf',
-  class: 'keyboard__btn keyboard__btn_symbol',
+  class: 'keyboard__btn keyboard__btn_letter',
 }, {
   value: 'g',
   shiftValue: 'G',
   keycode: 'keyg',
-  class: 'keyboard__btn keyboard__btn_symbol',
+  class: 'keyboard__btn keyboard__btn_letter',
 }, {
   value: 'h',
   shiftValue: 'H',
   keycode: 'keyh',
-  class: 'keyboard__btn keyboard__btn_symbol',
+  class: 'keyboard__btn keyboard__btn_letter',
 }, {
   value: 'j',
   shiftValue: 'J',
   keycode: 'keyj',
-  class: 'keyboard__btn keyboard__btn_symbol',
+  class: 'keyboard__btn keyboard__btn_letter',
 }, {
   value: 'k',
   shiftValue: 'K',
   keycode: 'keyk',
-  class: 'keyboard__btn keyboard__btn_symbol',
+  class: 'keyboard__btn keyboard__btn_letter',
 }, {
   value: 'l',
   shiftValue: 'L',
   keycode: 'keyl',
-  class: 'keyboard__btn keyboard__btn_symbol',
+  class: 'keyboard__btn keyboard__btn_letter',
 }, {
   value: ';',
   shiftValue: ':',
@@ -216,37 +216,37 @@ const en = [[{
   value: 'z',
   shiftValue: 'Z',
   keycode: 'keyz',
-  class: 'keyboard__btn keyboard__btn_symbol',
+  class: 'keyboard__btn keyboard__btn_letter',
 }, {
   value: 'x',
   shiftValue: 'X',
   keycode: 'keyx',
-  class: 'keyboard__btn keyboard__btn_symbol',
+  class: 'keyboard__btn keyboard__btn_letter',
 }, {
   value: 'c',
   shiftValue: 'C',
   keycode: 'keyc',
-  class: 'keyboard__btn keyboard__btn_symbol',
+  class: 'keyboard__btn keyboard__btn_letter',
 }, {
   value: 'v',
   shiftValue: 'V',
   keycode: 'keyv',
-  class: 'keyboard__btn keyboard__btn_symbol',
+  class: 'keyboard__btn keyboard__btn_letter',
 }, {
   value: 'b',
   shiftValue: 'B',
   keycode: 'keyb',
-  class: 'keyboard__btn keyboard__btn_symbol',
+  class: 'keyboard__btn keyboard__btn_letter',
 }, {
   value: 'n',
   shiftValue: 'N',
   keycode: 'keyn',
-  class: 'keyboard__btn keyboard__btn_symbol',
+  class: 'keyboard__btn keyboard__btn_letter',
 }, {
   value: 'm',
   shiftValue: 'M',
   keycode: 'keym',
-  class: 'keyboard__btn keyboard__btn_symbol',
+  class: 'keyboard__btn keyboard__btn_letter',
 }, {
   value: ',',
   shiftValue: '<',
@@ -322,7 +322,7 @@ const en = [[{
 const ru = [[{
   value: 'ё',
   shiftValue: 'Ё',
-  class: 'keyboard__btn keyboard__btn_symbol',
+  class: 'keyboard__btn keyboard__btn_letter',
 }, {
   value: '1',
   shiftValue: '!',
@@ -378,56 +378,55 @@ const ru = [[{
 }], [{
   value: 'Tab',
   shiftValue: 'Tab',
-
   class: 'keyboard__btn keyboard__btn_comand_small',
 }, {
   value: 'й',
   shiftValue: 'Й',
-  class: 'keyboard__btn keyboard__btn_symbol',
+  class: 'keyboard__btn keyboard__btn_letter',
 }, {
   value: 'ц',
   shiftValue: 'Ц',
-  class: 'keyboard__btn keyboard__btn_symbol',
+  class: 'keyboard__btn keyboard__btn_letter',
 }, {
   value: 'у',
   shiftValue: 'У',
-  class: 'keyboard__btn keyboard__btn_symbol',
+  class: 'keyboard__btn keyboard__btn_letter',
 }, {
   value: 'к',
   shiftValue: 'К',
-  class: 'keyboard__btn keyboard__btn_symbol',
+  class: 'keyboard__btn keyboard__btn_letter',
 }, {
   value: 'е',
   shiftValue: 'Е',
-  class: 'keyboard__btn keyboard__btn_symbol',
+  class: 'keyboard__btn keyboard__btn_letter',
 }, {
   value: 'н',
   shiftValue: 'Н',
-  class: 'keyboard__btn keyboard__btn_symbol',
+  class: 'keyboard__btn keyboard__btn_letter',
 }, {
   value: 'г',
   shiftValue: 'Г',
-  class: 'keyboard__btn keyboard__btn_symbol',
+  class: 'keyboard__btn keyboard__btn_letter',
 }, {
   value: 'ш',
   shiftValue: 'Ш',
-  class: 'keyboard__btn keyboard__btn_symbol',
+  class: 'keyboard__btn keyboard__btn_letter',
 }, {
   value: 'щ',
   shiftValue: 'Щ',
-  class: 'keyboard__btn keyboard__btn_symbol',
+  class: 'keyboard__btn keyboard__btn_letter',
 }, {
   value: 'з',
   shiftValue: 'З',
-  class: 'keyboard__btn keyboard__btn_symbol',
+  class: 'keyboard__btn keyboard__btn_letter',
 }, {
   value: 'х',
   shiftValue: 'Х',
-  class: 'keyboard__btn keyboard__btn_symbol',
+  class: 'keyboard__btn keyboard__btn_letter',
 }, {
   value: 'ъ',
   shiftValue: 'Ъ',
-  class: 'keyboard__btn keyboard__btn_symbol',
+  class: 'keyboard__btn keyboard__btn_letter',
 }, {
   value: '\\',
   shiftValue: '/',
@@ -443,47 +442,47 @@ const ru = [[{
 }, {
   value: 'ф',
   shiftValue: 'Ф',
-  class: 'keyboard__btn keyboard__btn_symbol',
+  class: 'keyboard__btn keyboard__btn_letter',
 }, {
   value: 'ы',
   shiftValue: 'Ы',
-  class: 'keyboard__btn keyboard__btn_symbol',
+  class: 'keyboard__btn keyboard__btn_letter',
 }, {
   value: 'в',
   shiftValue: 'В',
-  class: 'keyboard__btn keyboard__btn_symbol',
+  class: 'keyboard__btn keyboard__btn_letter',
 }, {
   value: 'а',
   shiftValue: 'А',
-  class: 'keyboard__btn keyboard__btn_symbol',
+  class: 'keyboard__btn keyboard__btn_letter',
 }, {
   value: 'п',
   shiftValue: 'П',
-  class: 'keyboard__btn keyboard__btn_symbol',
+  class: 'keyboard__btn keyboard__btn_letter',
 }, {
   value: 'р',
   shiftValue: 'Р',
-  class: 'keyboard__btn keyboard__btn_symbol',
+  class: 'keyboard__btn keyboard__btn_letter',
 }, {
   value: 'о',
   shiftValue: 'О',
-  class: 'keyboard__btn keyboard__btn_symbol',
+  class: 'keyboard__btn keyboard__btn_letter',
 }, {
   value: 'л',
   shiftValue: 'Л',
-  class: 'keyboard__btn keyboard__btn_symbol',
+  class: 'keyboard__btn keyboard__btn_letter',
 }, {
   value: 'д',
   shiftValue: 'Д',
-  class: 'keyboard__btn keyboard__btn_symbol',
+  class: 'keyboard__btn keyboard__btn_letter',
 }, {
   value: 'ж',
   shiftValue: 'Ж',
-  class: 'keyboard__btn keyboard__btn_symbol',
+  class: 'keyboard__btn keyboard__btn_letter',
 }, {
   value: 'э',
   shiftValue: 'Э',
-  class: 'keyboard__btn keyboard__btn_symbol',
+  class: 'keyboard__btn keyboard__btn_letter',
 }, {
   value: 'Enter',
   shiftValue: 'Enter',
@@ -495,39 +494,39 @@ const ru = [[{
 }, {
   value: 'я',
   shiftValue: 'Я',
-  class: 'keyboard__btn keyboard__btn_symbol',
+  class: 'keyboard__btn keyboard__btn_letter',
 }, {
   value: 'ч',
   shiftValue: 'Ч',
-  class: 'keyboard__btn keyboard__btn_symbol',
+  class: 'keyboard__btn keyboard__btn_letter',
 }, {
   value: 'c',
   shiftValue: 'С',
-  class: 'keyboard__btn keyboard__btn_symbol',
+  class: 'keyboard__btn keyboard__btn_letter',
 }, {
   value: 'м',
   shiftValue: 'М',
-  class: 'keyboard__btn keyboard__btn_symbol',
+  class: 'keyboard__btn keyboard__btn_letter',
 }, {
   value: 'и',
   shiftValue: 'И',
-  class: 'keyboard__btn keyboard__btn_symbol',
+  class: 'keyboard__btn keyboard__btn_letter',
 }, {
   value: 'т',
   shiftValue: 'Т',
-  class: 'keyboard__btn keyboard__btn_symbol',
+  class: 'keyboard__btn keyboard__btn_letter',
 }, {
   value: 'ь',
   shiftValue: 'Ь',
-  class: 'keyboard__btn keyboard__btn_symbol',
+  class: 'keyboard__btn keyboard__btn_letter',
 }, {
   value: 'б',
   shiftValue: 'Б',
-  class: 'keyboard__btn keyboard__btn_symbol',
+  class: 'keyboard__btn keyboard__btn_letter',
 }, {
   value: 'ю',
   shiftValue: 'Ю',
-  class: 'keyboard__btn keyboard__btn_symbol',
+  class: 'keyboard__btn keyboard__btn_letter',
 }, {
   value: '.',
   shiftValue: ',',

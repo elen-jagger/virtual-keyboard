@@ -6,13 +6,34 @@ class KeyButton {
   }
 //
   onClick = () => {
+    console.log('this.html.textContent = ', this.html.textContent);
     if (this.html.textContent === 'Shift') {
-      this.keyboard.toggleShift(true);
-    } else if (this.html.classList.contains('keyboard__btn_symbol') || this.html.classList.contains('keyboard__btn_space')) {
+      this.html.classList.add('keyboard__btn_pressed');
+      if (document.querySelector('.keyboard__btn_caps')) {
+        this.keyboard.toggleShift(true);
+        document.querySelectorAll('.keyboard__btn_letter').forEach((el) => el.textContent = el.textContent.toLowerCase());
+      } else {
+        this.keyboard.toggleShift(true);
+      }
+    } else if (this.html.classList.contains('keyboard__btn_symbol') || this.html.classList.contains('keyboard__btn_space') || this.html.classList.contains('keyboard__btn_letter')) {
       // todo use textarea
-      document.querySelector('textarea').value += this.html.textContent;
+      document.querySelector('textarea').value += this.html.innerText ? this.html.innerText : this.html.textContent;
 
-      this.keyboard.toggleShift(false);
+      document.querySelectorAll('[data-value="Shift"]').forEach((el) => el.classList.remove('keyboard__btn_pressed'));
+
+      if (document.querySelector('.keyboard__btn_caps')) {
+        this.keyboard.toggleShift(false);
+        document.querySelectorAll('.keyboard__btn_letter').forEach((el) => el.textContent = el.textContent.toUpperCase());
+      } else {
+        this.keyboard.toggleShift(false);
+      }
+    } else if (this.html.textContent === 'CapsLock') {
+      if (document.querySelector('.keyboard__btn_caps')) {
+        console.log('caps click');
+        this.keyboard.toggleCaps(true);
+      } else {
+        this.keyboard.toggleCaps(false);
+      }
     }
   }
 
@@ -82,9 +103,22 @@ class Keyboard {
       this.keys.get(event.code.toLowerCase()).html.classList.add('keyboard__btn_pressed');
       setTimeout(() => this.keys.get(event.code.toLowerCase()).html.classList.remove('keyboard__btn_pressed'), 200);
     } else if (event.code === 'ShiftLeft' || event.code === 'ShiftRight') {
-      console.log('onKeydown Shift');
-      this.keys.get(event.code.toLowerCase()).html.classList.add('keyboard__btn_pressed');
-      this.shift();
+        this.keys.get(event.code.toLowerCase()).html.classList.add('keyboard__btn_pressed');
+        if (document.querySelector('.keyboard__btn_caps')) {
+          this.shift();
+          document.querySelectorAll('.keyboard__btn_letter').forEach((el) => el.textContent = el.textContent.toLowerCase());
+        } else {
+          this.shift();
+        }
+    } else if (event.code === 'CapsLock') {
+        if (document.querySelector('.keyboard__btn_caps')) {
+          console.log('caps222 click');
+          this.toggleCaps(true);
+        } else {
+          this.toggleCaps(false);
+        }
+    } else if (event.code === 'Delete') {
+      //todo
     } else {
       this.keys.get(event.code.toLowerCase()).html.classList.add('keyboard__btn_pressed');
     }
@@ -93,7 +127,12 @@ class Keyboard {
   onKeyup = (event) => {
     if (event.code === 'ShiftLeft' || event.code === 'ShiftRight') {
       this.keys.get(event.code.toLowerCase()).html.classList.remove('keyboard__btn_pressed');
-      this.unshift();
+      if (document.querySelector('.keyboard__btn_caps')) {
+        this.unshift();
+        document.querySelectorAll('.keyboard__btn_letter').forEach((el) => el.textContent = el.textContent.toUpperCase());
+      } else {
+        this.unshift();
+      }
     } else {
       this.keys.get(event.code.toLowerCase()).html.classList.remove('keyboard__btn_pressed');
     }
@@ -120,6 +159,16 @@ class Keyboard {
   unshift() {
     for(const [name, key] of this.keys) {
       key.unshift();
+    }
+  }
+
+  toggleCaps(flag) {
+    if (!flag) {
+      document.querySelector('[data-value="CapsLock"]').classList.add('keyboard__btn_caps');
+      document.querySelectorAll('.keyboard__btn_letter').forEach((el) => el.textContent = el.textContent.toUpperCase());
+    } else {
+      document.querySelector('[data-value="CapsLock"]').classList.remove('keyboard__btn_caps');
+      document.querySelectorAll('.keyboard__btn_letter').forEach((el) => el.textContent = el.textContent.toLowerCase());
     }
   }
 }
